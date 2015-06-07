@@ -468,7 +468,7 @@ class Restler extends EventDispatcher
                 return strlen($a) - strlen($b);
             });
             foreach ($urls as $u) {
-                if (parse_url($u, PHP_URL_HOST) === $_SERVER['HTTP_HOST']) {
+                if (0 === strpos($_SERVER['HTTP_HOST'], parse_url($u, PHP_URL_HOST))) {
                     $this->baseUrl = $u;
                     return;
                 }
